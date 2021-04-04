@@ -2,6 +2,8 @@
 
 Signiere das Item in deiner Hand
 
+[Download](https://github.com/Frank-Mayer/item-sign/releases/latest)
+
 `/isign` Nur signieren
 
 `/sign <text>` Text an Signatur anhängen
