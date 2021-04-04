@@ -1,0 +1,17 @@
+name: Sign
+version: ${project.version}
+main: de.kuerbisskraft.sign.Sign
+api-version: 1.15
+prefix: s
+authors: [ FrankMayer ]
+description: Signiere items
+website: https://kuerbisskraft.de
+
+commands:
+  isign:
+    description: Signiere ein Item in deiner Hand
+
+permissions:
+  isign.use:
+    description: Erlaubt das signieren von Items
+    default: true
