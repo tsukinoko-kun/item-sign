@@ -8,6 +8,7 @@ import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.regex.Pattern
 
 class Sign : JavaPlugin(), CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
@@ -43,12 +44,16 @@ class Sign : JavaPlugin(), CommandExecutor {
         }
         val meta = item.itemMeta!!
 
-        val txt = args.joinToString(" ").replace("\\n", "\n").replace("/n", "\n")
+        if (args.isNotEmpty()) {
+            val pattern = Pattern.compile("&(?=[0-9a-blmno])", Pattern.CASE_INSENSITIVE)
+            val name = args.joinToString(" ").replace("\\n", "\n").replace("/n", "\n").replace(pattern.toRegex(), "§")
+            meta.setDisplayName(name.trim())
+        }
 
         val current = LocalDateTime.now()
         val dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
 
-        val lore = "Signiert von ${ChatColor.GREEN}${player.name}${ChatColor.RESET} am ${ChatColor.GREEN}${current.format(dateFormatter)}${ChatColor.RESET} $txt"
+        val lore = "Signiert von ${ChatColor.GREEN}${player.name}${ChatColor.RESET} am ${ChatColor.GREEN}${current.format(dateFormatter)}${ChatColor.RESET}"
         if (meta.lore != null) {
             meta.lore!!.add("----------------")
             meta.lore!!.add(lore)
