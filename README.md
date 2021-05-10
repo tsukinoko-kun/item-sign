@@ -1,5 +1,8 @@
 # item-sign
 
+| :information_source: This is a commissioned work |
+|--------------------------------------------------|
+
 Signiere das Item in deiner Hand
 
 [Download](https://github.com/Frank-Mayer/item-sign/releases/latest)
